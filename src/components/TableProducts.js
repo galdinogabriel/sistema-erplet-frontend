@@ -1,3 +1,4 @@
+//imports mui
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -22,10 +23,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
-function createData(name, calories, fat, carbs, protein) {
+function createData(name, quantidade, fat, carbs, protein) {
   return {
     name,
-    calories,
+    quantidade,
     fat,
     carbs,
     protein,
@@ -86,10 +87,10 @@ const headCells = [
     label: 'Dessert (100g serving)',
   },
   {
-    id: 'calories',
+    id: 'quantidade',
     numeric: true,
     disablePadding: false,
-    label: 'Calories',
+    label: 'Quantidade',
   },
   {
     id: 'fat',
@@ -197,7 +198,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          Produtos
         </Typography>
       )}
 
@@ -224,7 +225,7 @@ EnhancedTableToolbar.propTypes = {
 
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('quantidade');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -338,7 +339,7 @@ export default function EnhancedTable() {
                       >
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.quantidade}</TableCell>
                       <TableCell align="right">{row.fat}</TableCell>
                       <TableCell align="right">{row.carbs}</TableCell>
                       <TableCell align="right">{row.protein}</TableCell>

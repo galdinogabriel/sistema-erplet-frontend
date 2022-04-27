@@ -10,6 +10,9 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 
+//router
+import { Link } from "react-router-dom";
+
 
 
 export default function Login() {
@@ -33,7 +36,9 @@ export default function Login() {
 
                 <FormControlLabel control={<Checkbox defaultChecked />} label="Lembrar-me" />
 
-                <Button type='submit' style={btstyle} color='primary' variant="contained" fullWidth>Entrar</Button>
+                <Link to="/produtos">
+                    <Button type='submit' style={btstyle} color='primary' variant="contained" fullWidth>Entrar</Button>
+                </Link>
 
             </Paper>
         </Grid>

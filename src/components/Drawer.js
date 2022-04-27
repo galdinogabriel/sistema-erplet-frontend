@@ -1,3 +1,4 @@
+//import mui
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -15,8 +16,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import SettingsIcon from '@mui/icons-material/Settings';
+import InfoIcon from '@mui/icons-material/Info';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 
 
 const drawerWidth = 240;
@@ -128,7 +134,7 @@ export default function MiniDrawer(props) {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    {['Produtos', 'Estoque', 'Vendas', 'Vendedor'].map((text, index) => (
                         <ListItemButton
                             key={text}
                             sx={{
@@ -144,7 +150,19 @@ export default function MiniDrawer(props) {
                                     justifyContent: 'center',
                                 }}
                             >
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+
+                                {(() => {
+                                    if (index === 0) {
+                                        return <ProductionQuantityLimitsIcon />
+                                    } else if (index === 1) {
+                                        return <DashboardCustomizeIcon />
+                                    } else if (index === 2) {
+                                        return <StorefrontIcon />
+                                    } else {
+                                        return <PersonSearchIcon />
+                                    }
+                                })()}
+
                             </ListItemIcon>
                             <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
@@ -152,7 +170,7 @@ export default function MiniDrawer(props) {
                 </List>
                 <Divider />
                 <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    {['Configurações', 'Sobre', 'Logout'].map((text, index) => (
                         <ListItemButton
                             key={text}
                             sx={{
@@ -168,7 +186,17 @@ export default function MiniDrawer(props) {
                                     justifyContent: 'center',
                                 }}
                             >
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {(() => {
+                                    if (index === 0) {
+                                        return (
+                                            <SettingsIcon />
+                                        )
+                                    } else if (index === 1) {
+                                        return <InfoIcon />
+                                    } else {
+                                        return <LogoutIcon />
+                                    }
+                                })()}
                             </ListItemIcon>
                             <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
@@ -178,7 +206,7 @@ export default function MiniDrawer(props) {
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 <p paragraph >
-              {props.mainContent}
+                    {props.mainContent}
                 </p>
             </Box>
         </Box>
